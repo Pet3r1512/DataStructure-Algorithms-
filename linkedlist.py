@@ -57,6 +57,7 @@ def insert_at_specific_position(head, value, position):
         newNode.next = head
         return newNode
 
+    # traverse linked list to the given position
     cursor = 1
     current = head
     while cursor < position - 1 and current is not None:
@@ -67,6 +68,7 @@ def insert_at_specific_position(head, value, position):
         print("Invalid position")
         return head
     
+    # add new node
     newNode = Node(value)
     newNode.next = current.next
     current.next = newNode
