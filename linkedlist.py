@@ -46,6 +46,33 @@ def insert_at_the_end(head, value):
 
     return head
 
+def insert_at_specific_position(head, value, position):
+    if position < 1:
+        print("Invalid position")
+        return head
+
+    # if position is 1 then insert at the beginning
+    if position == 1:
+        newNode = Node(value)
+        newNode.next = head
+        return newNode
+
+    cursor = 1
+    current = head
+    while cursor < position - 1 and current is not None:
+        current = current.next
+        cursor += 1
+
+    if current is None:
+        print("Invalid position")
+        return head
+    
+    newNode = Node(value)
+    newNode.next = current.next
+    current.next = newNode
+
+    return head
+
 
 ## Traversal: visiting each node in linked list and perform some operations on the data
 
@@ -71,8 +98,13 @@ def main():
     
     traversalLinkedList(head)
 
-    insertEndValue = input("Enter your value to be inserted in the linked list: ")
-    insert_at_the_end(head, int(insertEndValue))
+    # insertEndValue = input("Enter your value to be inserted in the linked list: ")
+    # insert_at_the_end(head, int(insertEndValue))
+
+    insertValue = input("Enter value u want to import: ")
+    position = input("And import at position: ")
+
+    head = insert_at_specific_position(head, int(insertValue), int(position))
     
     return head
 
