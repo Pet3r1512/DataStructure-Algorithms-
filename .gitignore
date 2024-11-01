@@ -3,3 +3,5 @@
 node_modules
 
 .pytest_cache
+
+practices/**/__pycache__/
