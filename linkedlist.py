@@ -27,6 +27,7 @@ def insert_at_beginning(head, value):
 
     return head
 
+# Insert new node at the end of linked list
 def insert_at_the_end(head, value):
     # create a new node with given value
     newNode = Node(value)
@@ -46,6 +47,7 @@ def insert_at_the_end(head, value):
 
     return head
 
+# Insert new Node at a specific position
 def insert_at_specific_position(head, value, position):
     if position < 1:
         print("Invalid position")
@@ -75,6 +77,67 @@ def insert_at_specific_position(head, value, position):
 
     return head
 
+## Deletion: delete a node with 3 positions: head, end and specific position
+
+# Delete a node at the beginning of linked list
+
+def delete_at_beginning(head):
+    if head is None:
+        return None
+    
+    temp = head
+    head = head.next
+    temp = None
+
+    return head
+
+# Delete a node at the end of linked list
+
+def delete_at_end(head):
+    if head is None:
+        return None
+    
+    if head.next is None:
+        return delete_at_beginning(head)
+
+    current = head
+
+    while current.next.next is not None:
+        current = current.next
+
+    current.next = None
+
+    return head
+
+# Delete a node at a specific position
+
+def delete_at_position(head, position):
+    if head is None:
+        return None
+    
+    if position < 0:
+        print("Invalid position")
+        return head
+    
+    if position == 0:
+        return delete_at_beginning(head)
+    
+    cursor = 0
+    current = head
+
+    for i in range(0, position - 1):
+        if current is not None:
+            current = current.next
+
+    if current is None or current.next is None:
+        print("Invalid position")
+        return head
+
+    temp = current.next
+    current.next = current.next.next
+    temp = None
+
+    return head
 
 ## Traversal: visiting each node in linked list and perform some operations on the data
 
@@ -103,13 +166,25 @@ def main():
     # insertEndValue = input("Enter your value to be inserted in the linked list: ")
     # insert_at_the_end(head, int(insertEndValue))
 
-    insertValue = input("Enter value u want to import: ")
-    position = input("And import at position: ")
+    # insertValue = input("Enter value u want to import: ")
+    # position = input("And import at position: ")
 
-    head = insert_at_specific_position(head, int(insertValue), int(position))
+    # head = insert_at_specific_position(head, int(insertValue), int(position))
+
+    # head = delete_at_beginning(head)
+
+    # traversalLinkedList(head)
+
+    # head = delete_at_end(head)
+
+    # traversalLinkedList(head)
+
+    delPos = input("Enter position you want to delete, start from 0: ")
+
+    head = delete_at_position(head, int(delPos))
+
+    traversalLinkedList(head)
     
     return head
 
 head = main()
-print("Linked list: ")
-traversalLinkedList(head)
