@@ -141,6 +141,19 @@ def delete_at_position(head, position):
 
 ## Traversal: visiting each node in linked list and perform some operations on the data
 
+def get_linked_list_length(head):
+    if head is None:
+        return "Empty linked list"
+
+    length = 1
+    current = head
+
+    while current.next is not None:
+        length += 1
+        current = current.next
+
+    return length
+
 def traversalLinkedList(head):
     current = head
 
@@ -161,7 +174,9 @@ def main():
     for number in arr:
         head = insert_at_beginning(head, int(number))
     
-    traversalLinkedList(head)
+    print("Linked list length: ", get_linked_list_length(head))
+
+    # traversalLinkedList(head)
 
     # insertEndValue = input("Enter your value to be inserted in the linked list: ")
     # insert_at_the_end(head, int(insertEndValue))
@@ -179,12 +194,12 @@ def main():
 
     # traversalLinkedList(head)
 
-    delPos = input("Enter position you want to delete, start from 0: ")
+    # delPos = input("Enter position you want to delete, start from 0: ")
 
-    head = delete_at_position(head, int(delPos))
+    # head = delete_at_position(head, int(delPos))
 
-    traversalLinkedList(head)
+    # traversalLinkedList(head)
     
-    return head
+    # return head
 
 head = main()
